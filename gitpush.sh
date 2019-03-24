@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#version 1.2
-#git add *
-#git add **/.gitignore
-#git add .gitignore
+#version 1.3
+git add *
+git add **/.gitignore
+git add .gitignore
 git add -u 
 git status
 echo 'Check status:'
