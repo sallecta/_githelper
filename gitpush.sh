@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#version 1.3
+#version 1.4
 git add *
 git add **/.gitignore
 git add .gitignore
@@ -18,10 +18,6 @@ fi
 echo commit message is \"$commmitMessage\"
 git commit --message="$commmitMessage"
 
-if [ "$commmitMessage" = "" ]
-then
-    commmitMessage='...'
-fi
 git push
 
 retVal=$?
