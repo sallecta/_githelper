@@ -30,8 +30,6 @@ checkError () {
 }
 result='notSet'
 
-$n='\n'
-
 DirExclude='githelper'
 GitPushFile='gitpush.sh'
 GitPushFileFull=$DirExclude'/'$GitPushFile
@@ -101,6 +99,11 @@ then
     confirm='yes'
 fi
 
+if [ "$confirm" = "" ] && [ "$1" = "push" ]
+then
+    confirm='yes'
+fi
+
 if [ ! "$confirm" = "yes" ]
 then
     echo '  - script canceled, user input is: ' $confirm
@@ -122,6 +125,24 @@ for destDir in ${arrTargetDirs[@]}; do
     checkError $eCode 
     echo -e '  '$result'\t'$destDir
 done
+if [ "$1" = "push" ]
+then
+    echo
+    echo
+    echo -e "  Pushing in subdirectories..."
+    echo
+    counter=0
+    for destDir in ${arrTargetDirs[@]}; do
+        counter=$(( $counter + 1 ))
+    echo -e "  Pushing in directory "$destDir
+    echo
+        #$destDir$destDir  'withCommit' # > /dev/null 2>&1
+        (cd $destDir && './gitpush.sh' 'withCommit')
+        eCode=$?
+        checkError $eCode 
+        echo -e '  '$result'\t'$destDir
+    done
+fi
 
 echo 
 echo -e $fBegin$fB'End of '"$myname"$fEnd

@@ -8,7 +8,7 @@ git add -u
 echo 'Check status:' 
 git status
 
-if [ "$1" = "cmessage_update_gitpush" ]
+if [ "$1" = "withCommit" ]
 then
     commmitMessageArg="update gitpush script"
     echo "- press Enter to accept commit message \"$commmitMessageArg\" and upload (push);"
