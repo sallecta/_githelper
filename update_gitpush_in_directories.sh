@@ -5,7 +5,7 @@
 
 if [ "$1" = "updir" ]
 then
-    (cd .. && githelper/update_gitpush_in_directories.sh)
+    (cd .. && githelper/update_gitpush_in_directories.sh $2)
     exit
 fi
 
