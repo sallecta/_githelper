@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#version 1.4
+#version 1.5
 git add *
 git add **/.gitignore
 git add .gitignore
