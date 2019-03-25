@@ -2,6 +2,13 @@
 
 #version 1.5
 #update gitpush in sub dirs with exception
+
+if [ "$1" = "updir" ]
+then
+    (cd .. && githelper/update_gitpush_in_directories.sh)
+    exit
+fi
+
 myname="GitPush Update Script"
 
 # example: $fBegin$fRed"  some text"$fEnd
