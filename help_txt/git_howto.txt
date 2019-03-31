@@ -5,6 +5,7 @@ git add *
 git commit
 git push
 git reset HEAD **/lib
+git reset HEAD **/*.lps
 git clone https://github.com/sallecta/laz_code_samples.git
 git pull laz_code_samples master
 git fetch laz_code_samples
