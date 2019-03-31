@@ -13,3 +13,68 @@ git remote -v
 git init
 git config --list
 
+
+remove commit
+https://stackoverflow.com/a/46724280
+
+
+There are two alternatives to this: the safe one that leaves you with a dirty git history, or the unsafe one that leaves you with a clean git history. You pick:
+Option 1: Revert
+
+You can tell git to "Revert a commit". This means it will introduce a change that reverts each change you made in a commit. You would need to execute it twice (once per commit):
+
+git revert 98y65r4
+git revert 987xcrt
+
+This solution will leave your git history like this (you can execute gitk --all to see a graphical representation of the state of your repo):
+
+2222222    revert of 987xcrt: this commit is not required
+1111111    revert of 98y65r4: this commit is not required
+abcd123    some message
+xyze456    another commit message
+98y65r4    this commit is not required
+987xcrt    this commit is not required
+bl8976t    initial commit
+
+Then you can push the new 2 commits to your remote repo:
+
+git push
+
+This solution is safe because it does not make destructive operations on your remote repo.
+Option 2: Interactive rebase
+
+You also can use an interactive rebase for that. The command is:
+
+git rebase -i bl8976t
+
+In it, you are telling git to let you select which commits you want to mix together, reorder or remove.
+
+When you execute the command an editor will open with a text similar to this:
+
+pick    bl8976t    initial commit
+pick    987xcrt    this commit is not required
+pick    98y65r4    this commit is not required
+pick    xyze456    another commit message
+pick    abcd123    some message
+
+Just go on and delete the lines you don't want, like this:
+
+pick    bl8976t    initial commit
+pick    xyze456    another commit message
+pick    abcd123    some message
+
+Save the file and close the editor.
+
+So far, this has only modified the local copy of your repository (you can see the tree of commits with gitk --all).
+
+Now you need to push your changes to your repo, which is done with a "push force", but before you execute the command bear in mind that push force is a destructive operation, it will overwrite the history of your remote repository and can cause merge troubles to other people working on it. If you are ok and want to do the push force, the command is:
+
+git push -f
+
+shareimprove this answer
+edited Sep 4 '18 at 16:31
+answered Oct 13 '17 at 7:04
+MondKin
+9,97863458
+add a comment
+Not the answer you're looking for? Browse other questions tagged git or ask your own question. 
