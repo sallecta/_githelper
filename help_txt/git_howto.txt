@@ -72,10 +72,30 @@ Now you need to push your changes to your repo, which is done with a "push force
 
 git push -f
 
-shareimprove this answer
-edited Sep 4 '18 at 16:31
-answered Oct 13 '17 at 7:04
-MondKin
-9,97863458
-add a comment
-Not the answer you're looking for? Browse other questions tagged git or ask your own question. 
+
+
+
+Remove all commits
+
+7
+Check out to a temporary branch:
+
+git checkout --orphan TEMP_BRANCH
+Add all the files:
+
+git add -A
+Commit the changes:
+
+git commit -am "Initial commit"
+Delete the old branch:
+
+git branch -D master
+Rename the temporary branch to master:
+
+git branch -m master
+Finally, force update to our repository:
+
+git push -f origin master
+
+
+
