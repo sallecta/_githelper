@@ -96,4 +96,9 @@ Finally, force update to our repository:
 git push -f origin master
 
 
+VERSIONS
+git describe HEAD
+
+
+
 
