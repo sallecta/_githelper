@@ -123,5 +123,15 @@ $ git tag -a v1.2 9fceb02
 Push tag
 git push origin 0.1
  * [new tag]         0.1 -> 0.1
+ 
+delete all tags
+ #Delete local tags.
+git tag -l | xargs git tag -d
+#Fetch remote tags.
+git fetch
+#Delete remote tags.
+git tag -l | xargs -n 1 git push --delete origin
+#Delete local tasg.
+git tag -l | xargs git tag -d
 
 
