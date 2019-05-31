@@ -128,12 +128,12 @@ delete all tags
  #Delete local tags.
 git tag -l | xargs git tag -d
 #Fetch remote tags.
-#store credentials
+##store credentials
 git config credential.helper store
 git fetch
 #Delete remote tags.
 git tag -l | xargs -n 1 git push --delete origin
-#Delete local tasg.
+#Delete local tags.
 git tag -l | xargs git tag -d
 ##remove credentials
-rm ~/.git-credentials
+git config credential.helper erase && rm ~/.delme-git
