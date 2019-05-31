@@ -120,5 +120,8 @@ Now, suppose you forgot to tag the project at v1.2, which was at the “updated 
 $ git tag -a v1.2 9fceb02
 
 
+Push tag
+git push origin 0.1
+ * [new tag]         0.1 -> 0.1
 
 
