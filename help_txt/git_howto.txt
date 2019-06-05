@@ -14,6 +14,11 @@ git remote -v
 git init
 git config --list
 
+rename commit
+
+git commit --amend
+https://help.github.com/en/articles/changing-a-commit-message
+
 
 remove commit
 https://stackoverflow.com/a/46724280
