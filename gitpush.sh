@@ -27,9 +27,7 @@ then
 	fi    
 fi
 
-git add *
-fn_stoponerror "$?" $LINENO
-git add .gitignore
+git config credential.helper store
 fn_stoponerror "$?" $LINENO
 git add .gitignore
 fn_stoponerror "$?" $LINENO
