@@ -1,6 +1,6 @@
 #!/bin/bash
-
-#version 1.7
+export LC_ALL=C.UTF-8
+#version 1.7.1
 
 fn_stoponerror () {
 if [ $1 -ne 0 ]; then
@@ -8,7 +8,7 @@ if [ $1 -ne 0 ]; then
         printf "  [Error at line No $lNo. $2]\n\n"
         exit
 else
-   printf "    [Success]\n\n"
+   printf "\n$lNo    [Success]\n\n"
 fi
 }
 
@@ -26,7 +26,6 @@ then
 	  fn_stoponerror "$?" $LINENO
 	fi    
 fi
-
 git config credential.helper store
 fn_stoponerror "$?" $LINENO
 git add .gitignore
