@@ -1,4 +1,4 @@
-export LC_ALL=C.utf-8
+export LC_ALL=C
 #version 1.7.1
 
 fn_stoponerror () {
@@ -29,7 +29,7 @@ git_app="git"
 $git_app config credential.helper store
 fn_stoponerror "$?" $LINENO
 $git_app add *
-fn_stoponerror "$?" $LINENO
+#fn_stoponerror "$?" $LINENO
 $git_app add -u
 fn_stoponerror "$?" $LINENO
 echo 'Check status:' 
