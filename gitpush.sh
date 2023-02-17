@@ -1,5 +1,6 @@
 #!/bin/bash
 export LC_ALL=C.UTF-8
+alias git='LANG=en_GB git'
 #version 1.7.1
 
 fn_stoponerror () {
