@@ -1,6 +1,4 @@
-#!/bin/bash
-export LC_ALL=C.UTF-8
-alias git='LANG=en_GB git'
+export LC_ALL=C.utf-8
 #version 1.7.1
 
 fn_stoponerror () {
@@ -27,14 +25,15 @@ then
 	  fn_stoponerror "$?" $LINENO
 	fi    
 fi
-git config credential.helper store
+git_app="git"
+$git_app config credential.helper store
 fn_stoponerror "$?" $LINENO
-git add .gitignore
+$git_app add *
 fn_stoponerror "$?" $LINENO
-git add -u
+$git_app add -u
 fn_stoponerror "$?" $LINENO
 echo 'Check status:' 
-git status
+$git_app status
 fn_stoponerror "$?" $LINENO
 
 echo "- press Enter to upload (push) with commit message \"...\""
@@ -57,10 +56,10 @@ fi
 
 echo commit message is \"$commmitMessage\"
 
-git commit --message="$commmitMessage"
+$git_app commit --message="$commmitMessage"
 fn_stoponerror "$?" $LINENO
 
-git push
+$git_app push
 
 retVal=$?
 if [ $retVal -ne 0 ]; then
